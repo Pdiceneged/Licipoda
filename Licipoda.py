@@ -128,7 +128,7 @@ def main():
     buscar_button = st.button("Buscar Licitações")
     if buscar_button:
         st.info("Buscando licitações...")
-        licitacoes_info = coletar_licitacoes(url_api, ["poda", "Serviços de Arborização", "corte arrancamento de arvores", "podação", "limpeza de coqueiros", "serviços elétricos", "conservação e manutenção predial", ], 1, token, data_maxima)
+        licitacoes_info = coletar_licitacoes(url_api, ["poda", "Arborização", "Arrancamento de arvores", "podação", "serviços elétricos", "conservação e manutenção predial", ], 1, token, data_maxima)
         st.success("Licitações processadas com sucesso!")
         st.write("Número de licitações coletadas: {}".format(len(licitacoes_info.split('---\n\n')) - 1))
         imprimir_licitacoes(licitacoes_info)
