@@ -8,13 +8,14 @@ st.set_page_config(
     page_title="+Licitações",
     page_icon="🤝"
 )
+
 @st.cache_data()
 def get_img_as_base64(file):
     with open(file, "rb") as f:
         data = f.read()
     return base64.b64encode(data).decode()
 
-img = get_img_as_base64("fundocontrat.png")
+img = get_img_as_base64("pdipaper5.png")
 
 page_bg_img = f"""
 <style>
@@ -65,7 +66,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 def coletar_licitacoes(url, palavras_chave, pagina, token, data_maxima, licitacoes_por_pagina=100):
     palavras_chave_str = ",".join(palavras_chave)
     params = {
-        'uf': '',
+        'uf': 'CE',  # Estado de São Paulo fixo
         'palavra_chave': palavras_chave_str,
         'pagina': pagina,
         'licitacoesPorPagina': licitacoes_por_pagina,
@@ -117,7 +118,7 @@ def imprimir_licitacoes(licitacoes_info):
         st.write("Nenhuma licitação encontrada.")
 
 def main():
-    st.image("kkk.png", width=270, use_column_width=False)
+    st.image("Logopdi.png", width=270, use_column_width=False)
     st.title("+Licitações")
     token = st.text_input("Coloque o Token:", type='password')
     url_api = st.secrets["licitacao"]["url"]
@@ -127,16 +128,13 @@ def main():
     buscar_button = st.button("Buscar Licitações")
     if buscar_button:
         st.info("Buscando licitações...")
-        licitacoes_info = coletar_licitacoes(url_api, ["elétrica", "fotovoltaica", "subestação", "corte", "religa", "sigfi", "migdi"], 1, token, data_maxima)
+        licitacoes_info = coletar_licitacoes(url_api, ["poda", "Serviços de Arborização", "corte arrancamento de arvores", "podação", "limpeza de coqueiros", "serviços elétricos", "conservação e manutenção predial", "operacional e tratamento quimico de precipitadores hidrodinamicos"], 1, token, data_maxima)
         st.success("Licitações processadas com sucesso!")
         st.write("Número de licitações coletadas: {}".format(len(licitacoes_info.split('---\n\n')) - 1))
         imprimir_licitacoes(licitacoes_info)
-        
 
 if __name__ == "__main__":
     main()
-
-
 
 st.markdown("---")
 st.markdown("Desenvolvido por [PedroFS](https://linktr.ee/Pedrofsf)")
