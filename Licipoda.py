@@ -6,7 +6,7 @@ import datetime
 
 st.set_page_config(
     page_title="+Licitações",
-    page_icon="🤝"
+    page_icon="🤝",
     st.subheader('Previsão da Natureza do Gasto com Base no Histórico')
 )
 
