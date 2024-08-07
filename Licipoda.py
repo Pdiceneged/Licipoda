@@ -8,6 +8,7 @@ st.set_page_config(
     page_title="+Licitações",
     page_icon="🤝"
 )
+st.subheader('Previsão da Natureza do Gasto com Base no Histórico')
 
 @st.cache_data()
 def get_img_as_base64(file):
@@ -66,7 +67,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 def coletar_licitacoes(url, palavras_chave, pagina, token, data_maxima, licitacoes_por_pagina=100):
     palavras_chave_str = ",".join(palavras_chave)
     params = {
-        'uf': 'CE',  # Estado de São Paulo fixo
+        'uf': 'CE',  
         'palavra_chave': palavras_chave_str,
         'pagina': pagina,
         'licitacoesPorPagina': licitacoes_por_pagina,
