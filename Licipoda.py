@@ -120,11 +120,15 @@ def imprimir_licitacoes(licitacoes_info):
 def main():
     st.image("Logopdi.png", width=270, use_column_width=False)
     st.title("+Licitações")
-    st.subheader("Palavras chave usadas na busca: Poda, Arborização, Arrancamento de arvores, Manutenção elétrica, Predial")
-
-    url_api = st.secrets["licitacao"]["url"]
-    token = st.secrets["licitacao"]["token"]
     
+    try:
+        url_api = st.secrets["licitacao"]["url"]
+        token = st.secrets["licitacao"]["token"]
+        st.subheader(f"Token: {token}")
+    except KeyError as e:
+        st.error(f"Erro ao acessar os segredos: {e}")
+        st.stop()
+
     data_maxima_input = st.date_input("Data máxima para as licitações:", datetime.datetime.today())
     data_maxima = datetime.datetime.combine(data_maxima_input, datetime.datetime.min.time())
 
