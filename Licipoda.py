@@ -120,7 +120,7 @@ def imprimir_licitacoes(licitacoes_info):
 def main():
     st.image("Logopdi.png", width=270, use_column_width=False)
     st.title("+Licitações")
-    st.subheader("Palavras chave usadas na busca: Poda, Arborização, Arrancamento de arvores, Manutenção elétrica, Predial")
+    st.subheader("Palavras-chave usadas na busca: Poda, arborização, arrancamento de arvores, manutenção elétrica e predial")
     token = st.text_input("Cole o código API aqui:", type='password')
     toko = url_api = st.secrets["licitacao"]["api"]
     st.subheader(f"API: {toko}")
