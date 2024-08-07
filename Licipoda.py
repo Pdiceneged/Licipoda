@@ -129,10 +129,15 @@ def main():
     buscar_button = st.button("Buscar Licitações")
     if buscar_button:
         st.info("Buscando licitações...")
-        licitacoes_info = coletar_licitacoes(url_api, ["poda", "Arborização", "Arrancamento de arvores", "podação", "elétrico", "predial",], 1, token, data_maxima)
+        licitacoes_info = coletar_licitacoes(url_api, ["poda", "Arborização", "Arrancamento de arvores", "podação", "elétrico", "predial"], 1, token, data_maxima)
         st.success("Licitações processadas com sucesso!")
         st.write("Número de licitações coletadas: {}".format(len(licitacoes_info.split('---\n\n')) - 1))
         imprimir_licitacoes(licitacoes_info)
+
+    st.markdown("---")
+    st.write("## API do Toko")
+    api_toko = st.secrets["toko"]["api"]
+    st.write(f"O Token da API do Toko é: {api_toko}")
 
 if __name__ == "__main__":
     main()
