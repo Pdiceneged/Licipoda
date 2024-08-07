@@ -127,7 +127,7 @@ def main():
         url_api = st.secrets["licitacao"]["url"]
     except KeyError as e:
         st.error(f"Chave não encontrada: {e}")
-        return
+        st.stop()
 
     data_maxima_input = st.date_input("Data máxima para as licitações:", datetime.datetime.today())
     data_maxima = datetime.datetime.combine(data_maxima_input, datetime.datetime.min.time())
