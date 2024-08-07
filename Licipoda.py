@@ -123,7 +123,7 @@ def main():
     
     try:
         url_api = st.secrets["licitacao"]["url"]
-        token = st.secrets["licitacao"]["token"]
+        token = st.secrets["lici"]["token"]
         st.subheader(f"Token: {token}")
     except KeyError as e:
         st.error(f"Erro ao acessar os segredos: {e}")
