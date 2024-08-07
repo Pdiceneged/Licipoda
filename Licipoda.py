@@ -121,14 +121,10 @@ def main():
     st.image("Logopdi.png", width=270, use_column_width=False)
     st.title("+Licitações")
     st.subheader("Palavras chave usadas na busca: Poda, Arborização, Arrancamento de arvores, Manutenção elétrica, Predial")
-    
-    try:
-        token = st.secrets["licitacao"]["token"]
-        url_api = st.secrets["licitacao"]["url"]
-    except KeyError as e:
-        st.error(f"Chave não encontrada: {e}")
-        st.stop()
 
+    url_api = st.secrets["licitacao"]["url"]
+    token = st.secrets["licitacao"]["token"]
+    
     data_maxima_input = st.date_input("Data máxima para as licitações:", datetime.datetime.today())
     data_maxima = datetime.datetime.combine(data_maxima_input, datetime.datetime.min.time())
 
