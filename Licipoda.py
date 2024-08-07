@@ -121,7 +121,7 @@ def main():
     st.image("Logopdi.png", width=270, use_column_width=False)
     st.title("+Licitações")
     st.subheader("Palavras chave usadas na busca: Poda, Arborização, Arrancamento de arvores, Manutenção elétrica, Predial")
-    token = st.text_input("Coloque o Token:", type='password')
+    token = st.secrets["licitacao"]["token"]
     url_api = st.secrets["licitacao"]["url"]
     data_maxima_input = st.date_input("Data máxima para as licitações:", datetime.datetime.today())
     data_maxima = datetime.datetime.combine(data_maxima_input, datetime.datetime.min.time())
@@ -133,11 +133,6 @@ def main():
         st.success("Licitações processadas com sucesso!")
         st.write("Número de licitações coletadas: {}".format(len(licitacoes_info.split('---\n\n')) - 1))
         imprimir_licitacoes(licitacoes_info)
-
-    st.markdown("---")
-    st.write("## API do Toko")
-    api_toko = st.secrets["toko"]["api"]
-    st.write(f"O Token da API do Toko é: {api_toko}")
 
 if __name__ == "__main__":
     main()
