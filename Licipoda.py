@@ -6,8 +6,7 @@ import datetime
 
 st.set_page_config(
     page_title="+Licitações",
-    page_icon="🤝",
-    st.subheader('Previsão da Natureza do Gasto com Base no Histórico')
+    page_icon="🤝"
 )
 
 @st.cache_data()
@@ -121,6 +120,7 @@ def imprimir_licitacoes(licitacoes_info):
 def main():
     st.image("Logopdi.png", width=270, use_column_width=False)
     st.title("+Licitações")
+    st.subheader("Palavras chave usadas na busca: Poda, Arborização, Arrancamento de arvores, Manutenção elétrica, Predial")
     token = st.text_input("Coloque o Token:", type='password')
     url_api = st.secrets["licitacao"]["url"]
     data_maxima_input = st.date_input("Data máxima para as licitações:", datetime.datetime.today())
