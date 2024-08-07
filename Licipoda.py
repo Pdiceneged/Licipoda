@@ -121,9 +121,9 @@ def main():
     st.image("Logopdi.png", width=270, use_column_width=False)
     st.title("+Licitações")
     st.subheader("Palavras chave usadas na busca: Poda, Arborização, Arrancamento de arvores, Manutenção elétrica, Predial")
-    token = st.text_input("Coloque o Token:", type='password')
+    token = st.text_input("Cole o código API aqui:", type='password')
     toko = url_api = st.secrets["licitacao"]["api"]
-    st.subheader(f"api: {toko}")
+    st.subheader(f"API: {toko}")
     url_api = st.secrets["licitacao"]["url"]
     data_maxima_input = st.date_input("Data máxima para as licitações:", datetime.datetime.today())
     data_maxima = datetime.datetime.combine(data_maxima_input, datetime.datetime.min.time())
