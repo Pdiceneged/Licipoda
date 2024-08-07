@@ -7,8 +7,8 @@ import datetime
 st.set_page_config(
     page_title="+Licitações",
     page_icon="🤝"
+    st.subheader('Previsão da Natureza do Gasto com Base no Histórico')
 )
-st.subheader('Previsão da Natureza do Gasto com Base no Histórico')
 
 @st.cache_data()
 def get_img_as_base64(file):
