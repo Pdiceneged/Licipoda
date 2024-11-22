@@ -66,7 +66,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 def coletar_licitacoes(url, palavras_chave, pagina, token, data_maxima, licitacoes_por_pagina=100):
     palavras_chave_str = ",".join(palavras_chave)
     params = {
-        'uf': 'CE',  
+        'uf': 'RN',  
         'palavra_chave': palavras_chave_str,
         'pagina': pagina,
         'licitacoesPorPagina': licitacoes_por_pagina,
@@ -120,7 +120,7 @@ def imprimir_licitacoes(licitacoes_info):
 def main():
     st.image("Logopdi.png", width=270, use_column_width=False)
     st.title("+Licitações")
-    st.subheader("Palavras-chave usadas na busca: Poda, arborização, arrancamento de arvores, manutenção elétrica e predial")
+    st.subheader("Palavras-chave usadas na busca: iluminação publica")
     token = st.text_input("Cole o código API aqui:", type='password')
     toko = url_api = st.secrets["licitacao"]["api"]
     st.subheader(f"API: {toko}")
@@ -131,7 +131,7 @@ def main():
     buscar_button = st.button("Buscar Licitações")
     if buscar_button:
         st.info("Buscando licitações...")
-        licitacoes_info = coletar_licitacoes(url_api, ["poda", "Arborização", "Arrancamento de arvores", "podação", "elétrico", "predial",], 1, token, data_maxima)
+        licitacoes_info = coletar_licitacoes(url_api, ["iluminação", "publica",], 1, token, data_maxima)
         st.success("Licitações processadas com sucesso!")
         st.write("Número de licitações coletadas: {}".format(len(licitacoes_info.split('---\n\n')) - 1))
         imprimir_licitacoes(licitacoes_info)
